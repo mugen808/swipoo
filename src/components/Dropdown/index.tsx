@@ -1,16 +1,24 @@
+import { InputLabel, Select, MenuItem } from '@mui/material'
+
 interface Props {
-  optionsArray: Array<string>
+  optionsArray: Array<string>,
+  onChange: (event: any) => void,
+  label: string,
+  value: string
 }
 
-const Dropdown: React.FC<Props> = ({ optionsArray }) => {
+const Dropdown: React.FC<Props> = ({ optionsArray, onChange, value, label }) => {
   return (
-    <select>
-    {
-      optionsArray?.map((brand: string, index: number) => (
-        <option key={index} value={brand}>{brand}</option>
-      ))
-    }      
-  </select>
+    <>
+      <InputLabel>{label}</InputLabel>
+      <Select value={value} onChange={onChange} required={true}>
+      {
+        optionsArray?.map((brand: string, index: number) => (
+          <MenuItem key={index} value={brand}>{brand}</MenuItem>
+        ))
+      }
+    </Select>
+  </>
   )
 }
 
