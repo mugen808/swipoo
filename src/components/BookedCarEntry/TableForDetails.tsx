@@ -7,7 +7,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import CarEvaluation from '../CarEvaluation';
 
-// &nbsp;
 const TableForDetails: React.FC<any> = ({ car }) => {
   return (
     <TableContainer component={Paper}>
