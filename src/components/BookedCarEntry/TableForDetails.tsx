@@ -5,59 +5,41 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+import CarEvaluation from '../CarEvaluation';
 
 // &nbsp;
-const TableForDetails: React.FC<any> = ({ modelDetails }) => {
+const TableForDetails: React.FC<any> = ({ car }) => {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table key={car.selectedModel.model} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Marca</TableCell>
-            <TableCell align="right">Modelo</TableCell>
-            <TableCell align="right">Cilindrada</TableCell>
-            <TableCell align="right">Cilindros</TableCell>
-            <TableCell align="right">Combustible</TableCell>
-            <TableCell align="right">Potencia&nbsp;(KW)</TableCell>
-            <TableCell align="right">Potencia fiscal</TableCell>
-            <TableCell align="right">Potencia CV</TableCell>
+            <TableCell align="center">Modelo</TableCell>
+            <TableCell align="center">Cilindrada</TableCell>
+            <TableCell align="center">Cilindros</TableCell>
+            <TableCell align="center">Combustible</TableCell>
+            <TableCell align="center">Potencia&nbsp;(KW)</TableCell>
+            <TableCell align="center">Potencia fiscal</TableCell>
+            <TableCell align="center">Potencia&nbsp;CV</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
+            <TableRow>
               <TableCell component="th" scope="row">
-                {row.name}
+                {car.selectedModel.brand}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="center">{car.selectedModel.model}</TableCell>
+              <TableCell align="center">{car.selectedModel.cc}</TableCell>
+              <TableCell align="center">{car.selectedModel.cylinders}</TableCell>
+              <TableCell align="center">{car.selectedModel.fuel}</TableCell>
+              <TableCell align="center">{car.selectedModel.kw}</TableCell>
+              <TableCell align="center">{car.selectedModel.cvf}</TableCell>
+              <TableCell align="center">{car.selectedModel.cv}</TableCell>
             </TableRow>
-          ))}
         </TableBody>
       </Table>
+      <CarEvaluation car={car} />
     </TableContainer>
   );
 }

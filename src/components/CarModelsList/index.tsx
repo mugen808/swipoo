@@ -21,15 +21,20 @@ interface CarModelDetails {
   value: string
 }
 
-const CarModelInput: React.FC = () => {
+const CarModelsList: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(-1)
-  const { carBrand, enrollmentDate, fuelType, selectedModel, setSelectedModel } = useCarDetailsContext()
-  console.log('selected model', selectedModel)
+  const { carBrand, enrollmentDate, fuelType, setSelectedModel } = useCarDetailsContext()
+  
+  let shouldFetch = true;
+  if (!carBrand || !enrollmentDate || !fuelType) shouldFetch = false;
+
   const queryDetails = `brand=${carBrand}&enrollmentDate=${enrollmentDate}&fuel=${fuelType}`
-  const { data: carModels, isSuccess, error } = useQuery(queryDetails, () => fetchCarModels(queryDetails), {
+  const { data: carModels, error } = useQuery(queryDetails, () => fetchCarModels(queryDetails), {
     retry: 1,
-    staleTime: Infinity
+    staleTime: Infinity,
+    enabled: shouldFetch
   })
+
   useEffect(() => {
     setSelectedModel('')
     setSelectedIndex(-1)
@@ -43,7 +48,7 @@ const CarModelInput: React.FC = () => {
   if (error) return (
     <List style={{ maxHeight: '30vh', overflow: 'auto' }}>
         <ListItem>
-            <ListItemText>Nothing to show yet</ListItemText>
+            <ListItemText>No hay modelos disponibles para los parametros insertados</ListItemText>
         </ListItem>
     </List>
   )
@@ -65,4 +70,4 @@ const CarModelInput: React.FC = () => {
   )
 }
 
-export default CarModelInput
+export default CarModelsList

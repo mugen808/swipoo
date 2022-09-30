@@ -26,5 +26,3 @@ const fetchCarITP = async (queryDetails: string) => {
 
 export { fetchBrands, fetchFuelTypes, fetchCarModels, fetchCarITP }
 
-
-// https://api.swipoo.com/v1/check-car-models?brand=Audi&enrollmentDate=2020&fuel=D

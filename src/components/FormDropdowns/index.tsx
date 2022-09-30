@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query'
 import { useCarDetailsContext } from '../../hooks/userCarDetailsContext';
 import { fetchBrands, fetchFuelTypes } from '../../services';
-import Dropdown from '../Dropdown';
+import Dropdown from './Dropdown';
 
-const CarBrandInput: React.FC = () => {
+const FormDropdowns: React.FC = () => {
   const { data: brandList, isSuccess: brandListFetched } = useQuery('brands', fetchBrands, {
     staleTime: Infinity
   })
@@ -31,4 +31,4 @@ const CarBrandInput: React.FC = () => {
   )
 }
 
-export default CarBrandInput;
+export default FormDropdowns;

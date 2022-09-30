@@ -18,14 +18,14 @@ const DateInput: React.FC = () => {
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <InputLabel id="date-picker">Fecha de matriculación</InputLabel>
-        <DesktopDatePicker
-          inputFormat="DD/MM/YYYY"
-          onChange={handleDateChange}
-          value={enrollmentDate || setLimitDate()}
-          renderInput={(params) => <TextField {...params} />}
-          disableFuture={true}
-        />
+        <InputLabel sx={{ marginTop: "2vh" }} id="date-picker">Fecha de matriculación</InputLabel>
+          <DesktopDatePicker
+            inputFormat="DD/MM/YYYY"
+            onChange={handleDateChange}
+            value={enrollmentDate || setLimitDate()}
+            renderInput={(params) => <TextField {...params} />}
+            disableFuture={true}
+          />
       </LocalizationProvider>
     </>
   )

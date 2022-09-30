@@ -10,7 +10,7 @@ interface Props {
 const Dropdown: React.FC<Props> = ({ optionsArray, onChange, value, label }) => {
   return (
     <>
-      <InputLabel>{label}</InputLabel>
+      <InputLabel sx={{ marginTop: "2vh" }}>{label}</InputLabel>
       <Select value={value} onChange={onChange} required={true}>
       {
         optionsArray?.map((brand: string, index: number) => (

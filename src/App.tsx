@@ -1,5 +1,5 @@
 import Form from './components/Form'
-import CarDetails from './components/CarDetails'
+import BookedCarsList from './components/BookedCarsList'
 import { CarDetailsContextProvider } from './context/CarDetailsContext'
 import { QueryClientProvider } from 'react-query'
 import { Container } from '@mui/material'
@@ -13,7 +13,7 @@ function App() {
       <QueryClientProvider client={client}>
         <CarDetailsContextProvider>
           <Form />
-          <CarDetails />
+          <BookedCarsList />
         </CarDetailsContextProvider>
       </QueryClientProvider>
     </Container>

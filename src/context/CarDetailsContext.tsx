@@ -9,9 +9,14 @@ export const CarDetailsContextProvider: React.FC<PropsWithChildren> = ({ childre
   const [enrollmentDate, setEnrollmentDate] = useState<string>('')
   const [selectedModel, setSelectedModel] = useState<Object>({})
   const [userName, setUserName] = useState<string>('')
-
+  
   return (
-    <CarDetailsContext.Provider value={{ carBrand, fuelType, enrollmentDate, setCarBrand, setFuelType, setEnrollmentDate, selectedModel, setSelectedModel, userName, setUserName }}>
+    <CarDetailsContext.Provider value={{ 
+      carBrand, fuelType, enrollmentDate,
+      setCarBrand, setFuelType, setEnrollmentDate,
+      selectedModel, userName,
+      setSelectedModel, setUserName
+    }}>
       {children}
     </CarDetailsContext.Provider>
   )
